@@ -11,13 +11,13 @@ class MainPage extends Component{
     }
 
     // Takes the name of a bookshelf as a string and returns an array of books on a shelf of that name
-    getBookshelf(shelfName){
+    getBookshelf = (shelfName) => {
       return this.props.books.filter((book) => book.shelf === shelfName)
     }
 
 
   render(){
-    const { books, onShelfChange } = this.props
+    const { onShelfChange } = this.props
 
     return(
       <div className="list-books">

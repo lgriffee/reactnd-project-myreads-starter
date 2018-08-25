@@ -18,10 +18,14 @@ class BooksApp extends React.Component {
   }
 
   // Change the bookshelf a book is on
-  changeBookshelf(book, shelfName){
-    BooksAPI.update(book, shelfName).then(
-      console.log(book.shelf)
-    )
+  changeBookshelf = (book, shelfName) => {
+    BooksAPI.update(book, shelfName).then(() => {
+      book.shelf = shelfName
+
+      this.setState({
+        books: this.state.books
+      })
+    })
   }
 
 
