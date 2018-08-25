@@ -19,8 +19,6 @@ class MainPage extends Component{
   render(){
     const { books, onShelfChange } = this.props
 
-    console.log(books)
-
     return(
       <div className="list-books">
         <div className="list-books-title">

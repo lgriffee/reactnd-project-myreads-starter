@@ -4,7 +4,6 @@ import Book from './Book'
 
 class Shelf extends Component{
 
-//TODO: add props for books being passed in & shelf type
 static propTypes = {
     shelfTitle: PropTypes.string.isRequired,
     shelfBooks: PropTypes.array.isRequired,
@@ -12,7 +11,7 @@ static propTypes = {
   }
 
   render(){
-    //TODO: save prop types
+
   const { shelfTitle, shelfBooks, onShelfChange } = this.props
 
     return(
@@ -22,6 +21,7 @@ static propTypes = {
           <ol className="books-grid">
             {shelfBooks.map((book) =>
               <Book
+                key={book.id}
                 book={book}
                 onShelfChange={onShelfChange}
               />
