@@ -17,11 +17,16 @@ export const get = (bookId) =>
     .then(res => res.json())
     .then(data => data.book)
 
+// Returns a Promise which resolves to a JSON object containing a collection of book objects
+// Represents the books currently in the bookshelves in the app
 export const getAll = () =>
   fetch(`${api}/books`, { headers })
     .then(res => res.json())
     .then(data => data.books)
 
+// book: <Object> containing at minimum an id attribute
+// shelf: <String> contains one of ["wantToRead", "currentlyReading", "read"]
+// Returns a Promise which resolves to a JSON object containing the response data of the POST request
 export const update = (book, shelf) =>
   fetch(`${api}/books/${book.id}`, {
     method: 'PUT',
@@ -32,6 +37,9 @@ export const update = (book, shelf) =>
     body: JSON.stringify({ shelf })
   }).then(res => res.json())
 
+// query: <String>
+// Returns a Promise which resolves to a JSON object containing a collection of a maximum of 20 book objects
+// These books do not know which shelf they are on. They are raw results only.
 export const search = (query) =>
   fetch(`${api}/search`, {
     method: 'POST',
