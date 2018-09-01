@@ -11,8 +11,12 @@ class Book extends Component{
   render(){
     const { book, onShelfChange } = this.props
 
+    let bookCover = book.imageLinks
+                      ? book.imageLinks.smallThumbnail
+                      : 'https://upload.wikimedia.org/wikipedia/commons/d/d3/VisualEditor_-_Icon_-_Journal.svg'
+
     var bookCoverStyle = {
-      backgroundImage: `url(${book.imageLinks.thumbnail})`
+      backgroundImage: `url(${bookCover})`
     }
 
     return(
