@@ -19,31 +19,31 @@ class SearchPage extends Component{
   updateQuery = (query) => {
     this.setState({ query: query.trim() })
     this.updateBookResults(query)
-    console.log(this.state.searchResult)
   }
 
   // Find all books corresponding to the query and show them
   updateBookResults = (query) => {
-    // Make sure query is valid
-    if (query){
-      BooksAPI.search(query).then((booksFound) => {
-        // Only update search results for valid search terms
-        if (!booksFound.error){
-          this.setState({
-            searchResult: booksFound
-          })
-        }else{ // Clear search results for invalid search terms
-          this.setState({
-            searchResult: []
-          })
-        }
-      })
-    }else{
-      this.setState({ // Clear search results for invalid query types
+    // Clear search results if  query is empty/undefined
+    if (!query){
+      this.setState({
         searchResult: []
       })
+      return
     }
+    BooksAPI.search(query).then((booksFound) => {
+      // Clear search results if search terms are invalid
+      if (booksFound.error){
+        this.setState({
+          searchResult: []
+        })
+        return
+      }
+      // Update search results for valid search terms
+        this.setState({
+          searchResult: booksFound
+        })
 
+    })
   }
 
   render(){
