@@ -6,13 +6,13 @@ import Shelf from '../components/Shelf'
 class MainPage extends Component{
 
   static propTypes = {
-      books: PropTypes.array.isRequired,
+      shelvedBooks: PropTypes.array.isRequired,
       onShelfChange: PropTypes.func.isRequired
     }
 
     // Takes the name of a bookshelf as a string and returns an array of books on a shelf of that name
     getBookshelf = (shelfName) => {
-      return this.props.books.filter((book) => book.shelf === shelfName)
+      return this.props.shelvedBooks.filter((book) => book.shelf === shelfName)
     }
 
 

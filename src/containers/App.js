@@ -7,13 +7,13 @@ import SearchPage from './SearchPage'
 
 class BooksApp extends React.Component {
   state = {
-    books: []
+    shelvedBooks: []
   }
 
-  // Fetch books from server and re-render the page with book info
+  // Fetch books on shelves from server and re-render the page with book info
   componentDidMount(){
-    BooksAPI.getAll().then((books) => {
-      this.setState({ books })
+    BooksAPI.getAll().then( shelvedBooks => {
+      this.setState({ shelvedBooks })
     })
   }
 
@@ -23,7 +23,7 @@ class BooksApp extends React.Component {
       book.shelf = shelfName
 
       this.setState({
-        books: this.state.books
+        shelvedBooks: this.state.shelvedBooks
       })
     })
   }
@@ -34,13 +34,13 @@ class BooksApp extends React.Component {
       <div className="app">
         <Route exact path='/' render={() => (
           <MainPage
-          books={this.state.books}
+          shelvedBooks={this.state.shelvedBooks}
           onShelfChange={this.changeBookshelf}
         />
         )}/>
         <Route exact path='/search' render={() => (
           <SearchPage
-            books={[]}
+            shelvedBooks={this.state.shelvedBooks}
             onShelfChange={this.changeBookshelf}
           />
         )}/>

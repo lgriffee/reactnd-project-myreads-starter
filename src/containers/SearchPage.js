@@ -7,7 +7,7 @@ import Shelf from '../components/Shelf'
 class SearchPage extends Component{
 
   static propTypes = {
-      books: PropTypes.array.isRequired,
+      shelvedBooks: PropTypes.array.isRequired,
       onShelfChange: PropTypes.func.isRequired
   }
 
@@ -31,13 +31,24 @@ class SearchPage extends Component{
       return
     }
     BooksAPI.search(query).then((booksFound) => {
-      // Clear search results if search terms are invalid
+      // Clear search results if error retrieving books based on query
+      // (Likely caused by use of invalid search term)
       if (booksFound.error){
         this.setState({
           searchResult: []
         })
         return
       }
+
+      // TODO: Run through search results and if an id for one of those books
+      //is the same as the books in the books array then copy the " "
+     // (this.props.shelvedBooks.filter( book => book.id === booksFound.id)).map(book)
+     //
+     //  booksFound
+     //    .map(bookFound => this.props.shelvedBooks)
+
+
+
       // Update search results for valid search terms
         this.setState({
           searchResult: booksFound
@@ -47,7 +58,7 @@ class SearchPage extends Component{
   }
 
   render(){
-    const { books, onShelfChange} = this.props
+    const { onShelfChange} = this.props
     const { query, searchResult } = this.state
 
     return(
