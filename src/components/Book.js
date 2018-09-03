@@ -16,7 +16,7 @@ class Book extends Component{
                       : 'https://upload.wikimedia.org/wikipedia/commons/d/d3/VisualEditor_-_Icon_-_Journal.svg'
 
     const bookCoverStyle = {
-      backgroundImage: `url(${bookCover})`
+      background: `url(${bookCover})`
     }
 
     let bookShelf = book.shelf

@@ -23,7 +23,13 @@ class BooksApp extends React.Component {
       book.shelf = shelfName
 
       this.setState({
+        // Ensures all bookshelves re-render when any book's shelf is updated
+        // Keeps main and search pages in sync wihtout needing to refresh pages
         shelvedBooks: this.state.shelvedBooks
+                        // Check to make sure book is not already on a bookshelf
+                        .filter(shelvedBook => shelvedBook.id !== book.id)
+                        // Add the new book to shelved books for re-render
+                        .concat(book)
       })
     })
   }
@@ -34,9 +40,9 @@ class BooksApp extends React.Component {
       <div className="app">
         <Route exact path='/' render={() => (
           <MainPage
-          shelvedBooks={this.state.shelvedBooks}
-          onShelfChange={this.changeBookshelf}
-        />
+            shelvedBooks={this.state.shelvedBooks}
+            onShelfChange={this.changeBookshelf}
+          />
         )}/>
         <Route exact path='/search' render={() => (
           <SearchPage

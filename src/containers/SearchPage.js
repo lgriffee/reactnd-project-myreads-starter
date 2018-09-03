@@ -30,6 +30,7 @@ class SearchPage extends Component{
       })
       return
     }
+
     BooksAPI.search(query).then((booksFound) => {
       // Clear search results if error retrieving books based on query
       // (Likely caused by use of invalid search term)
@@ -40,17 +41,16 @@ class SearchPage extends Component{
         return
       }
 
-      // TODO: Run through search results and if an id for one of those books
-      //is the same as the books in the books array then copy the " "
-     booksFound
-        .map(bookFound =>
+      // Maintain book's shelf between main and search pages
+      booksFound
+        .map(bookFound => // Go through all books returned from search terms
           (this.props.shelvedBooks
+            // Filter out search results that are shelved books
             .filter(shelvedBook => shelvedBook.id === bookFound.id)
+            // Set shelf for search result book to same shelf as shelved book
             .map(shelvedBook => bookFound.shelf = shelvedBook.shelf)
           )
         )
-
-
 
       // Update search results for valid search terms
         this.setState({
@@ -61,7 +61,7 @@ class SearchPage extends Component{
   }
 
   render(){
-    const { onShelfChange} = this.props
+    const { onShelfChange } = this.props
     const { query, searchResult } = this.state
 
     return(
