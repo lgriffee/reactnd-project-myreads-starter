@@ -42,10 +42,13 @@ class SearchPage extends Component{
 
       // TODO: Run through search results and if an id for one of those books
       //is the same as the books in the books array then copy the " "
-     // (this.props.shelvedBooks.filter( book => book.id === booksFound.id)).map(book)
-     //
-     //  booksFound
-     //    .map(bookFound => this.props.shelvedBooks)
+     booksFound
+        .map(bookFound =>
+          (this.props.shelvedBooks
+            .filter(shelvedBook => shelvedBook.id === bookFound.id)
+            .map(shelvedBook => bookFound.shelf = shelvedBook.shelf)
+          )
+        )
 
 
 

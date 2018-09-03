@@ -15,9 +15,13 @@ class Book extends Component{
                       ? book.imageLinks.smallThumbnail
                       : 'https://upload.wikimedia.org/wikipedia/commons/d/d3/VisualEditor_-_Icon_-_Journal.svg'
 
-    var bookCoverStyle = {
+    const bookCoverStyle = {
       backgroundImage: `url(${bookCover})`
     }
+
+    let bookShelf = book.shelf
+                    ? book.shelf
+                    : "none"
 
     return(
       <li>
@@ -25,7 +29,7 @@ class Book extends Component{
           <div className="book-top">
             <div className="book-cover" style={bookCoverStyle}></div>
             <div className="book-shelf-changer">
-              <select value={book.shelf} onChange={(event) => onShelfChange(book, event.target.value)}>
+              <select value={bookShelf} onChange={(event) => onShelfChange(book, event.target.value)}>
                 <option value="move" disabled>Move to...</option>
                 <option value="currentlyReading">Currently Reading</option>
                 <option value="wantToRead">Want to Read</option>
