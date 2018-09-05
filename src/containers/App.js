@@ -4,6 +4,7 @@ import * as BooksAPI from '../api/BooksAPI'
 import './App.css'
 import MainPage from './MainPage'
 import SearchPage from './SearchPage'
+import sortBy from 'sort-by'
 
 class BooksApp extends React.Component {
   state = {
@@ -13,6 +14,7 @@ class BooksApp extends React.Component {
   // Fetch books on shelves from server and re-render the page with book info
   componentDidMount(){
     BooksAPI.getAll().then( shelvedBooks => {
+      shelvedBooks.sort(sortBy('title')) // Sort books by title
       this.setState({ shelvedBooks })
     })
   }
@@ -30,6 +32,8 @@ class BooksApp extends React.Component {
                         .filter(shelvedBook => shelvedBook.id !== book.id)
                         // Add the new book to shelved books for re-render
                         .concat(book)
+                        // Resort books by title
+                        .sort(sortBy('title'))
       })
     })
   }
