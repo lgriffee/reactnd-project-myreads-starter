@@ -4,15 +4,15 @@ import Book from './Book'
 
 class Shelf extends Component{
 
-static propTypes = {
+  static propTypes = {
     shelfTitle: PropTypes.string.isRequired,
     shelfBooks: PropTypes.array.isRequired,
     onShelfChange: PropTypes.func.isRequired
   }
 
-  render(){
 
-  const { shelfTitle, shelfBooks, onShelfChange } = this.props
+  render(){
+    const { shelfTitle, shelfBooks, onShelfChange } = this.props
 
     return(
       <div className="bookshelf">

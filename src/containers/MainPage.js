@@ -8,12 +8,12 @@ class MainPage extends Component{
   static propTypes = {
       shelvedBooks: PropTypes.array.isRequired,
       onShelfChange: PropTypes.func.isRequired
-    }
+  }
 
-    // Takes the name of a bookshelf as a string and returns an array of books on a shelf of that name
-    getBookshelf = (shelfName) => {
-      return this.props.shelvedBooks.filter((book) => book.shelf === shelfName)
-    }
+  // Takes the name of a bookshelf and returns an array of books on that shelf
+  getBookshelf = (shelfName) => {
+    return this.props.shelvedBooks.filter((book) => book.shelf === shelfName)
+  }
 
 
   render(){

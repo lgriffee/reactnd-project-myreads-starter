@@ -28,10 +28,12 @@
 html, body, .root {
   height: 100%;
 }
+
 body {
   line-height: 1.5;
   font-family: 'Open Sans', sans-serif;
 }
+
 body, .app {
   background: var(--alabaster);
 }
@@ -49,11 +51,11 @@ body, .app {
   list-style-type: none;
   padding: 0;
   margin: 0;
-
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
 }
+
 .books-grid li {
   padding: 10px 15px;
   text-align: left;
@@ -103,6 +105,7 @@ body, .app {
   background-size: 20px;
   box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
 }
+
 .book-shelf-changer select {
   width: 100%;
   height: 100%;

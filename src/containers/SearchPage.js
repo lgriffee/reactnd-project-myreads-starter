@@ -33,7 +33,7 @@ class SearchPage extends Component{
 
     BooksAPI.search(query).then((booksFound) => {
       // Clear search results if error retrieving books based on query
-      // (Likely caused by use of invalid search term)
+      // (likely caused by use of invalid search term)
       if (booksFound.error){
         this.setState({
           searchResult: []
@@ -52,13 +52,13 @@ class SearchPage extends Component{
           )
         )
 
-      // Update search results for valid search terms
-        this.setState({
+       // Update search results for valid search terms
+       this.setState({
           searchResult: booksFound
         })
-
     })
   }
+
 
   render(){
     const { onShelfChange } = this.props

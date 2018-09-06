@@ -11,7 +11,7 @@ class BooksApp extends React.Component {
     shelvedBooks: []
   }
 
-  // Fetch books on shelves from server and re-render the page with book info
+  // Fetch books on shelves from server and re-render the page
   componentDidMount(){
     BooksAPI.getAll().then( shelvedBooks => {
       shelvedBooks.sort(sortBy('title')) // Sort books by title
@@ -19,7 +19,7 @@ class BooksApp extends React.Component {
     })
   }
 
-  // Change the bookshelf a book is on
+  // Change the shelf a book is on
   changeBookshelf = (book, shelfName) => {
     BooksAPI.update(book, shelfName).then(() => {
       book.shelf = shelfName
