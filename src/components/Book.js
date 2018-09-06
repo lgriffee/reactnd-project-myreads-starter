@@ -22,8 +22,8 @@ const Book = (props) => {
   }
 
   let bookShelf = book.shelf
-                  ? book.shelf
-                  : "none"
+                    ? book.shelf
+                    : "none"
 
   return(
     <li>
